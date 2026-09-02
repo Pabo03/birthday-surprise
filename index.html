@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07070c">
+  <title>A Little Surprise</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/countdown.css">
+  <link rel="stylesheet" href="css/reveal.css">
+</head>
+<body>
+  <main id="app">
+      <!-- Background birthday music -->
+      <audio id="birthday-music" loop preload="auto">
+          <source
+                  id="birthday-music-source"
+                  src="assets/audio/birthday.mp3"
+                  type="audio/mpeg"
+          >
+      </audio>
+    <section id="countdown-screen" class="screen active">
+      <div class="stars"></div>
+      <div class="opening-glow"></div>
+      <div class="opening-content">
+        <p class="eyebrow">A little something is brewing...</p>
+        <h1>For <span data-name>FRIEND</span></h1>
+        <p class="opening-subtitle">A tiny journey made just for you. Hope it is worth your attention (IT REQUIRES TONS OF IT).</p>
+        <div id="countdown" class="countdown" aria-live="polite">
+          <div><strong id="days">00</strong><span>Days</span></div>
+          <div><strong id="hours">00</strong><span>Hours</span></div>
+          <div><strong id="minutes">00</strong><span>Minutes</span></div>
+          <div><strong id="seconds">00</strong><span>Seconds</span></div>
+        </div>
+        <button id="unlock-button" class="primary-button hidden" type="button">Hoorah 22nd it is, LET'S BEGIN ✨</button>
+        <p id="locked-note">Come back when the countdown reaches zero.</p>
+      </div>
+    </section>
+
+    <section id="candle-screen" class="screen">
+      <div class="ambient-glow"></div>
+      <div class="candle-stage">
+        <p class="eyebrow">The first little challenge</p>
+        <h2>Light the sparkle.</h2>
+        <p class="stage-copy sparkle-instruction" id="sparkle-instruction"> Drag the match through the glowing strip to light it.</p>
+
+        <div class="cake-scene" id="cake-scene">
+          <div class="ignition-strip" id="ignition-strip">
+            <span>STRIKE HERE</span>
+            <i></i>
+          </div>
+          <div class="sparkler" id="sparkler" aria-label="Birthday sparkle">
+            <span class="sparkler-stick"></span>
+            <span class="sparkler-tip"></span>
+          </div>
+
+          <div class="cake" id="cake">
+            <div class="cake-glow"></div>
+            <div class="flame flame-1" id="flame-1"></div>
+            <div class="flame flame-2" id="flame-2"></div>
+            <div class="flame flame-3" id="flame-3"></div>
+            <div class="wick wick-1"></div>
+            <div class="wick wick-2"></div>
+            <div class="wick wick-3"></div>
+            <div class="candle candle-1"></div>
+            <div class="candle candle-2"></div>
+            <div class="candle candle-3"></div>
+            <div class="frosting"></div>
+            <div class="drip drip-1"></div>
+            <div class="drip drip-2"></div>
+            <div class="drip drip-3"></div>
+            <div class="sprinkles">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="cake-body"></div>
+            <div class="cake-detail cake-detail-1"></div>
+            <div class="cake-detail cake-detail-2"></div>
+            <div class="cake-tag" aria-label="Birthday nickname">
+              <span id="cake-tag-text">OLD HAG</span>
+            </div>
+            <div class="cake-plate"></div>
+            <div class="cake-crumbs" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="cake-cut-split" aria-hidden="true"></div>
+          </div>
+
+          <button id="match" class="match" type="button" aria-label="Drag match through the ignition strip and toward the candles">
+            <span class="match-head"></span>
+            <span class="match-flame"></span>
+            <span class="match-smoke"></span>
+            <span class="match-stick"></span>
+          </button>
+          <div class="match-label" aria-hidden="true">drag</div>
+          <div class="proximity-hint" id="proximity-hint">Bring the burning match near the candles ✨</div>
+        </div>
+
+        <p class="interaction-hint" id="match-hint">↔ Drag the match through the glowing strip</p>
+
+        <div id="candle-controls" class="hidden">
+          <p id="candle-instruction">The candles lit (Just like you!) 🔥. Make a wish, then blow them out. 🎂</p>
+          <button id="mic-button" class="secondary-button" type="button">Enable microphone 🎤</button>
+          <button id="tap-button" class="secondary-button" type="button">Tap to blow them out</button>
+          <div id="mic-status" class="small-note"></div>
+        </div>
+
+        <div id="cut-controls" class="hidden">
+          <p id="cut-instruction">Now cut the cake: swipe across it with your finger or mouse. 🔪</p>
+          <div id="cut-progress" class="progress-note">Make one clean swipe across the cake.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fireworks-screen" class="screen">
+      <canvas id="fireworks"></canvas>
+      <div class="center-message fireworks-message">
+        <p class="eyebrow">Finally it's here</p>
+        <p>And now...</p>
+        <h2>❤️ Let the birthday magic begin!</h2>
+        <p class="fireworks-caption">Every little surprise from here is for you.</p>
+        <button id="fireworks-next" class="primary-button" type="button">Show me the surprises →</button>
+      </div>
+    </section>
+
+    <section id="puzzle-screen" class="screen">
+      <div class="content-card puzzle-card">
+        <p class="eyebrow">Secret #1</p>
+        <h2>The day you enjoyed with your friends in bhilai (when I was there 🥺) 🧩</h2>
+        <p id="puzzle-description">Tap two tiles to swap them. Complete the picture to unlock the next secret.</p>
+        <div id="puzzle" class="puzzle" aria-label="Photo puzzle"></div>
+        <p id="puzzle-status">0 / 16 tiles in the correct position</p>
+        <button id="puzzle-next" class="primary-button hidden" type="button">Next secret →</button>
+      </div>
+    </section>
+
+    <section id="word-screen" class="screen">
+      <div class="content-card mini-game-card">
+        <p class="eyebrow">Secret #2</p>
+        <h2>Unscramble this 💭</h2>
+        <p id="word-hint"></p>
+        <div id="word-scrambled-word" class="scrambled-word"></div>
+        <div id="word-inputs" class="word-inputs"></div>
+        <p id="word-status" class="game-status"></p>
+        <button id="word-next" class="primary-button hidden" type="button">Another Hook</button>
+      </div>
+    </section>
+
+    <section id="word2-screen" class="screen">
+      <div class="content-card mini-game-card">
+        <p class="eyebrow">Secret #3</p>
+        <h2>One more word to unlock 🔐</h2>
+        <p id="word2-hint"></p>
+        <div id="word2-scrambled-word" class="scrambled-word"></div>
+        <div id="word2-inputs" class="word-inputs"></div>
+        <p id="word2-status" class="game-status"></p>
+        <button id="word2-next" class="primary-button hidden" type="button">Reveal your message →</button>
+      </div>
+    </section>
+
+    <section id="message-screen" class="screen">
+      <div class="message-wrap">
+        <p class="eyebrow">For all the troubles you get your reward now...</p>
+        <h2 id="birthday-title"></h2>
+        <p id="birthday-message" class="typewriter"></p>
+        <button id="memory-button" class="primary-button" type="button">Open the memories 📸</button>
+      </div>
+    </section>
+
+    <section id="memories-screen" class="screen">
+      <div class="content-card memories-card">
+        <p class="eyebrow">A few moments worth revisit ❤️</p>
+        <h2>Our little photobook</h2>
+        <p class="stage-copy">Scroll through the little pieces of time I wanted you to keep.</p>
+        <div id="gallery" class="gallery"></div>
+        <button id="final-button" class="primary-button" type="button">One final surprise ❤️</button>
+      </div>
+    </section>
+
+    <section id="final-screen" class="screen">
+      <div class="final-content">
+        <div id="final-particles"></div>
+        <p class="eyebrow">And finally...</p>
+        <h2 id="final-message"></h2>
+        <p>Some people make ordinary days feel special. So bear me to the end... no way I am settling for ordinary days now that I have tasted the special ones cause of you. Wishing you lots of joy and health so that you can bear me good. ❤️</p>
+        <p>You're one of them. ❤️</p>
+        <div class="final-signature">Made with a ridiculous amount of care and prayers ❤️✨</div>
+      </div>
+    </section>
+  </main>
+
+  <audio id="birthday-music" loop preload="auto">
+    <source id="birthday-music-source" src="assets/audio/birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="js/config.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/fireworks.js"></script>
+  <script src="js/candle.js"></script>
+  <script src="js/puzzle.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

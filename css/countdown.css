@@ -1,0 +1,6 @@
+.countdown { display: grid; grid-template-columns: repeat(4, minmax(65px, 1fr)); gap: 10px; width: min(700px, 100%); position: relative; margin: 25px auto; }
+.countdown div { padding: 16px 8px; border: 1px solid var(--border); background: rgba(255,255,255,.04); border-radius: 18px; }
+.countdown strong { display: block; font-size: clamp(1.7rem, 7vw, 3.5rem); }
+.countdown span { color: var(--muted); font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; }
+#locked-note { color: var(--muted); margin: 20px 0; }
+@media (max-width: 450px) { .countdown { gap: 6px; } .countdown div { padding: 12px 4px; } }
