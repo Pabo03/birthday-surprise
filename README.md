@@ -1,4 +1,4 @@
-# Birthday Surprise V2
+# Birthday Surprise 
 
 ## Quick customization
 
