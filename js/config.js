@@ -2,7 +2,7 @@ const birthdayConfig = {
   name: "The Special One ✨",
 
   // DEVELOPMENT: set this to a few minutes in the future while testing.
-  birthday: "2026-09-02T00:00:00+05:30",
+  birthday: "2026-09-03T00:00:00+05:30",
 
   message:
     "I hope this year gives you countless reasons to smile and me being one of them, people who make you feel loved (limited to me so that you hang around just me ><), and moments you will want to remember forever. You deserve all of it and much more. Hope this marks the beginning of your smile count ",
